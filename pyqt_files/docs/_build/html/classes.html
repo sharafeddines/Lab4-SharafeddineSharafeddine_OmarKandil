@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>classes module &mdash; pyqt documentation 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d7bb8d4d"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="databases module" href="databases.html" />
+    <link rel="prev" title="lab3" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pyqt documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">lab3</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">classes module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#classes.Course"><code class="docutils literal notranslate"><span class="pre">Course</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes.Course.add_student"><code class="docutils literal notranslate"><span class="pre">Course.add_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classes.Course.serializing_function"><code class="docutils literal notranslate"><span class="pre">Course.serializing_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes.Instructor"><code class="docutils literal notranslate"><span class="pre">Instructor</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes.Instructor.assign_course"><code class="docutils literal notranslate"><span class="pre">Instructor.assign_course()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes.Person"><code class="docutils literal notranslate"><span class="pre">Person</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes.Person.introduce"><code class="docutils literal notranslate"><span class="pre">Person.introduce()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#classes.Person.serializing_function"><code class="docutils literal notranslate"><span class="pre">Person.serializing_function()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes.Student"><code class="docutils literal notranslate"><span class="pre">Student</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#classes.Student.register_course"><code class="docutils literal notranslate"><span class="pre">Student.register_course()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#classes.validate_email"><code class="docutils literal notranslate"><span class="pre">validate_email()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes.validate_numbers"><code class="docutils literal notranslate"><span class="pre">validate_numbers()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="databases.html">databases module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyqtGUI.html">pyqtGUI module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pyqt documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">lab3</a></li>
+      <li class="breadcrumb-item active">classes module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/classes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-classes">
+<span id="classes-module"></span><h1>classes module<a class="headerlink" href="#module-classes" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="classes.Course">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classes.</span></span><span class="sig-name descname"><span class="pre">Course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">course_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Course" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing a Course.</p>
+<p>The <cite>Course</cite> class holds information about a course, including the course ID,
+name, assigned instructor, and enrolled students. It also provides methods to
+add students to the course and serialize the course data into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>course_id</strong> (<em>str</em>) – A unique identifier for the course.</p></li>
+<li><p><strong>course_name</strong> (<em>str</em>) – The name of the course.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the course ID is invalid (must be a non-negative integer).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="classes.Course.add_student">
+<span class="sig-name descname"><span class="pre">add_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">student</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Course.add_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Course.add_student" title="Link to this definition"></a></dt>
+<dd><p>Add a student to the course.</p>
+<p>This method adds a student to the course’s enrolled students list and registers
+the course with the student’s registered courses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>student</strong> (<a class="reference internal" href="#classes.Student" title="classes.Student"><em>Student</em></a>) – The student to add to the course.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the provided object is not of type <cite>Student</cite>.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classes.Course.serializing_function">
+<span class="sig-name descname"><span class="pre">serializing_function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Course.serializing_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Course.serializing_function" title="Link to this definition"></a></dt>
+<dd><p>Serialize the course details into a dictionary.</p>
+<p>This method returns a dictionary representation of the course, including the course ID,
+name, instructor, and a list of enrolled students by their student IDs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the course details.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="classes.Instructor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classes.</span></span><span class="sig-name descname"><span class="pre">Instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructor_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Instructor" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#classes.Person" title="classes.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a></p>
+<p>A class representing an Instructor, which is a subclass of <cite>Person</cite>.</p>
+<p>The <cite>Instructor</cite> class extends the <cite>Person</cite> class with additional attributes like
+<cite>instructor_id</cite> and assigned courses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The instructor’s name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The instructor’s age, must be a non-negative integer.</p></li>
+<li><p><strong>_email</strong> (<em>str</em>) – The instructor’s email address.</p></li>
+<li><p><strong>instructor_id</strong> (<em>str</em>) – A unique identifier for the instructor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the age, email, or instructor ID is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="classes.Instructor.assign_course">
+<span class="sig-name descname"><span class="pre">assign_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Instructor.assign_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Instructor.assign_course" title="Link to this definition"></a></dt>
+<dd><p>Assign the instructor to a course.</p>
+<p>This method assigns the instructor to a course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course</strong> (<a class="reference internal" href="#classes.Course" title="classes.Course"><em>Course</em></a>) – The course object to assign.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the provided object is not of type <cite>Course</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="classes.Person">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classes.</span></span><span class="sig-name descname"><span class="pre">Person</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Person"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Person" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing a Person.</p>
+<p>The <cite>Person</cite> class holds information about a person, including their name,
+age, and email address. The email and age are validated using the provided
+<cite>validate_email</cite> and <cite>validate_numbers</cite> functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the person.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The age of the person, must be a non-negative integer.</p></li>
+<li><p><strong>_email</strong> (<em>str</em>) – The email address of the person.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the age or email is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="classes.Person.introduce">
+<span class="sig-name descname"><span class="pre">introduce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Person.introduce"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Person.introduce" title="Link to this definition"></a></dt>
+<dd><p>Print an introduction of the person.</p>
+<p>This method prints the person’s name, age, and email address.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="classes.Person.serializing_function">
+<span class="sig-name descname"><span class="pre">serializing_function</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Person.serializing_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Person.serializing_function" title="Link to this definition"></a></dt>
+<dd><p>Serialize the person’s details into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A dictionary containing the person’s name, age, and email.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="classes.Student">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">classes.</span></span><span class="sig-name descname"><span class="pre">Student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Student" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#classes.Person" title="classes.Person"><code class="xref py py-class docutils literal notranslate"><span class="pre">Person</span></code></a></p>
+<p>A class representing a Student, which is a subclass of <cite>Person</cite>.</p>
+<p>The <cite>Student</cite> class extends the <cite>Person</cite> class with additional attributes like
+<cite>student_id</cite> and registered courses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The student’s name.</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – The student’s age, must be a non-negative integer.</p></li>
+<li><p><strong>_email</strong> (<em>str</em>) – The student’s email address.</p></li>
+<li><p><strong>student_id</strong> (<em>str</em>) – A unique identifier for the student.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the age, email, or student ID is invalid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="classes.Student.register_course">
+<span class="sig-name descname"><span class="pre">register_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#Student.register_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.Student.register_course" title="Link to this definition"></a></dt>
+<dd><p>Register the student for a course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course</strong> (<a class="reference internal" href="#classes.Course" title="classes.Course"><em>Course</em></a>) – The course object to register for.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – If the provided object is not of type <cite>Course</cite>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="classes.validate_email">
+<span class="sig-prename descclassname"><span class="pre">classes.</span></span><span class="sig-name descname"><span class="pre">validate_email</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#validate_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.validate_email" title="Link to this definition"></a></dt>
+<dd><p>Validate an email address.</p>
+<p>This function uses a regular expression to check if the provided email
+address has a valid format (something like <cite>user&#64;example.com</cite>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>email</strong> (<em>str</em>) – The email address to validate.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the email is not in a valid format or is empty.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="classes.validate_numbers">
+<span class="sig-prename descclassname"><span class="pre">classes.</span></span><span class="sig-name descname"><span class="pre">validate_numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/classes.html#validate_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#classes.validate_numbers" title="Link to this definition"></a></dt>
+<dd><p>Validate a numeric value to ensure it is non-negative and of type integer.</p>
+<p>This function checks if the input is a valid integer and that it is greater
+than zero. If the input is invalid or negative, it raises an exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – The number to validate.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the input is not a non-negative integer.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The validated number.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="lab3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="databases.html" class="btn btn-neutral float-right" title="databases module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

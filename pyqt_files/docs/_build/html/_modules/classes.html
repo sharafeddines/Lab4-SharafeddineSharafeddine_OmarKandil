@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>classes &mdash; pyqt documentation 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d7bb8d4d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyqt documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">lab3</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyqt documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for classes</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">School management system involving People, Students, Instructors, and Courses.</span>
+
+<span class="sd">This module provides functionality to:</span>
+<span class="sd">- Validate email addresses and numeric values.</span>
+<span class="sd">- Define a `Person` class with `Student` and `Instructor` subclasses.</span>
+<span class="sd">- Define a `Course` class where students can enroll and instructors can be assigned.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="validate_email">
+<a class="viewcode-back" href="../classes.html#classes.validate_email">[docs]</a>
+<span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validate an email address.</span>
+
+<span class="sd">    This function uses a regular expression to check if the provided email</span>
+<span class="sd">    address has a valid format (something like `user@example.com`).</span>
+
+<span class="sd">    :param email: The email address to validate.</span>
+<span class="sd">    :type email: str</span>
+<span class="sd">    :raises Exception: If the email is not in a valid format or is empty.</span>
+<span class="sd">    :return: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">email_regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[^@]+@[^@]+\.[^@]+&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">email_regex</span><span class="p">,</span> <span class="n">email</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">email</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;invalid email&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="validate_numbers">
+<a class="viewcode-back" href="../classes.html#classes.validate_numbers">[docs]</a>
+<span class="k">def</span> <span class="nf">validate_numbers</span><span class="p">(</span><span class="n">num</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validate a numeric value to ensure it is non-negative and of type integer.</span>
+
+<span class="sd">    This function checks if the input is a valid integer and that it is greater</span>
+<span class="sd">    than zero. If the input is invalid or negative, it raises an exception.</span>
+
+<span class="sd">    :param num: The number to validate.</span>
+<span class="sd">    :type num: int</span>
+<span class="sd">    :raises Exception: If the input is not a non-negative integer.</span>
+<span class="sd">    :return: The validated number.</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">num</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;parameter must be non negative number&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">num</span><span class="o">&lt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;parameter must be non negative number&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">num</span></div>
+
+
+<div class="viewcode-block" id="Person">
+<a class="viewcode-back" href="../classes.html#classes.Person">[docs]</a>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a Person.</span>
+
+<span class="sd">    The `Person` class holds information about a person, including their name,</span>
+<span class="sd">    age, and email address. The email and age are validated using the provided</span>
+<span class="sd">    `validate_email` and `validate_numbers` functions.</span>
+
+<span class="sd">    :param name: The name of the person.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: The age of the person, must be a non-negative integer.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param _email: The email address of the person.</span>
+<span class="sd">    :type _email: str</span>
+<span class="sd">    :raises Exception: If the age or email is invalid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">_email</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">=</span><span class="n">name</span>
+        <span class="n">age</span><span class="o">=</span><span class="n">validate_numbers</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="o">=</span><span class="n">age</span>
+        <span class="n">validate_email</span><span class="p">(</span><span class="n">_email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="o">=</span><span class="n">_email</span>
+
+<div class="viewcode-block" id="Person.introduce">
+<a class="viewcode-back" href="../classes.html#classes.Person.introduce">[docs]</a>
+    <span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print an introduction of the person.</span>
+
+<span class="sd">        This method prints the person&#39;s name, age, and email address.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name of the person is&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="s2">&quot; , their age is&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span><span class="s2">&quot; and they have email:&quot;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">email</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Person.serializing_function">
+<a class="viewcode-back" href="../classes.html#classes.Person.serializing_function">[docs]</a>
+    <span class="k">def</span> <span class="nf">serializing_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the person&#39;s details into a dictionary.</span>
+
+<span class="sd">        :return: A dictionary containing the person&#39;s name, age, and email.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span>
+        <span class="p">}</span></div>
+</div>
+
+    
+
+<div class="viewcode-block" id="Student">
+<a class="viewcode-back" href="../classes.html#classes.Student">[docs]</a>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a Student, which is a subclass of `Person`.</span>
+
+<span class="sd">    The `Student` class extends the `Person` class with additional attributes like </span>
+<span class="sd">    `student_id` and registered courses.</span>
+
+<span class="sd">    :param name: The student&#39;s name.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: The student&#39;s age, must be a non-negative integer.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param _email: The student&#39;s email address.</span>
+<span class="sd">    :type _email: str</span>
+<span class="sd">    :param student_id: A unique identifier for the student.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :raises Exception: If the age, email, or student ID is invalid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">_email</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">student_id</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">_email</span><span class="p">)</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="o">=</span><span class="n">student_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">student_id</span><span class="o">=</span><span class="n">validate_numbers</span><span class="p">(</span><span class="n">student_id</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Student.register_course">
+<a class="viewcode-back" href="../classes.html#classes.Student.register_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">register_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Register the student for a course.</span>
+
+<span class="sd">        :param course: The course object to register for.</span>
+<span class="sd">        :type course: Course</span>
+<span class="sd">        :raises AssertionError: If the provided object is not of type `Course`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">course</span><span class="p">)</span> <span class="o">==</span> <span class="n">Course</span><span class="p">,</span> <span class="s2">&quot;Must input a course&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span></div>
+</div>
+
+
+<div class="viewcode-block" id="Instructor">
+<a class="viewcode-back" href="../classes.html#classes.Instructor">[docs]</a>
+<span class="k">class</span> <span class="nc">Instructor</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an Instructor, which is a subclass of `Person`.</span>
+
+<span class="sd">    The `Instructor` class extends the `Person` class with additional attributes like </span>
+<span class="sd">    `instructor_id` and assigned courses.</span>
+
+<span class="sd">    :param name: The instructor&#39;s name.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: The instructor&#39;s age, must be a non-negative integer.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param _email: The instructor&#39;s email address.</span>
+<span class="sd">    :type _email: str</span>
+<span class="sd">    :param instructor_id: A unique identifier for the instructor.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :raises Exception: If the age, email, or instructor ID is invalid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">age</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span><span class="n">_email</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">instructor_id</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">_email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span> <span class="o">=</span> <span class="p">[]</span> 
+        <span class="n">instructor_id</span><span class="o">=</span><span class="n">validate_numbers</span><span class="p">(</span><span class="n">instructor_id</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Instructor.assign_course">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.assign_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">assign_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign the instructor to a course.</span>
+
+<span class="sd">        This method assigns the instructor to a course.</span>
+
+<span class="sd">        :param course: The course object to assign.</span>
+<span class="sd">        :type course: Course</span>
+<span class="sd">        :raises AssertionError: If the provided object is not of type `Course`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">course</span><span class="p">)</span> <span class="o">==</span> <span class="n">Course</span><span class="p">,</span> <span class="s2">&quot;Must input a course&quot;</span>
+        <span class="k">if</span> <span class="n">course</span><span class="o">.</span><span class="n">instructor</span> <span class="ow">and</span> <span class="n">course</span><span class="o">.</span><span class="n">instructor</span> <span class="o">!=</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="n">course</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
+        <span class="n">course</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">if</span> <span class="n">course</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span></div>
+</div>
+
+
+<div class="viewcode-block" id="Course">
+<a class="viewcode-back" href="../classes.html#classes.Course">[docs]</a>
+<span class="k">class</span> <span class="nc">Course</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a Course.</span>
+
+<span class="sd">    The `Course` class holds information about a course, including the course ID,</span>
+<span class="sd">    name, assigned instructor, and enrolled students. It also provides methods to </span>
+<span class="sd">    add students to the course and serialize the course data into a dictionary.</span>
+
+<span class="sd">    :param course_id: A unique identifier for the course.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param course_name: The name of the course.</span>
+<span class="sd">    :type course_name: str</span>
+<span class="sd">    :raises Exception: If the course ID is invalid (must be a non-negative integer).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">course_id</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span><span class="n">course_name</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span> <span class="o">=</span> <span class="n">course_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1">#initially dont have an instructor, we add it in the instructors assign course function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span> <span class="o">=</span><span class="p">[]</span>  
+        <span class="n">validate_numbers</span><span class="p">(</span><span class="n">course_id</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Course.add_student">
+<a class="viewcode-back" href="../classes.html#classes.Course.add_student">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">student</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a student to the course.</span>
+
+<span class="sd">        This method adds a student to the course&#39;s enrolled students list and registers</span>
+<span class="sd">        the course with the student&#39;s registered courses.</span>
+
+<span class="sd">        :param student: The student to add to the course.</span>
+<span class="sd">        :type student: Student</span>
+<span class="sd">        :raises AssertionError: If the provided object is not of type `Student`.</span>
+<span class="sd">        :return: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">student</span><span class="p">)</span> <span class="o">==</span> <span class="n">Student</span><span class="p">,</span> <span class="s2">&quot;Must input a student&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+        <span class="n">student</span><span class="o">.</span><span class="n">register_course</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="c1"># we want to register the course for this student</span></div>
+
+
+<div class="viewcode-block" id="Course.serializing_function">
+<a class="viewcode-back" href="../classes.html#classes.Course.serializing_function">[docs]</a>
+    <span class="k">def</span> <span class="nf">serializing_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the course details into a dictionary.</span>
+
+<span class="sd">        This method returns a dictionary representation of the course, including the course ID,</span>
+<span class="sd">        name, instructor, and a list of enrolled students by their student IDs.</span>
+
+<span class="sd">        :return: A dictionary containing the course details.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;course_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span>
+            <span class="s1">&#39;course_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span><span class="p">,</span>
+            <span class="s1">&#39;instructor&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">instructor_id</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span> <span class="c1">#(need this if since id may be none)</span>
+            <span class="s1">&#39;enrolled_students&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">student</span><span class="o">.</span><span class="n">student_id</span> <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">]</span>
+        <span class="p">}</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
