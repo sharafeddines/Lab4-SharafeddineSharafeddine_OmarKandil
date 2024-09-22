@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>databases &mdash; pyqt documentation 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d7bb8d4d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            pyqt documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">lab3</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">pyqt documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">databases</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for databases</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Files for managing a SQLite database for a school management system.</span>
+
+<span class="sd">This module provides a `DatabaseManager` class to handle operations like:</span>
+<span class="sd">- Adding, retrieving, updating, and deleting students, instructors, and courses.</span>
+<span class="sd">- Enrolling students in courses and assigning instructors to courses.</span>
+<span class="sd">- Searching records and backing up the database.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="DatabaseManager">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager">[docs]</a>
+<span class="k">class</span> <span class="nc">DatabaseManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class to manage the SQLite database for school management.</span>
+
+<span class="sd">    This class provides methods to interact with the database, including creating tables, </span>
+<span class="sd">    adding students, instructors, and courses, enrolling students, and assigning instructors. </span>
+<span class="sd">    It also supports searching and backing up the database.</span>
+
+<span class="sd">    :param db_name: The name of the SQLite database file. Default is &#39;school_management.db&#39;.</span>
+<span class="sd">    :type db_name: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="o">=</span><span class="s1">&#39;school_management.db&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the database manager and create the connection.</span>
+
+<span class="sd">        This constructor connects to the SQLite database and sets up the necessary tables if they do not exist.</span>
+
+<span class="sd">        :param db_name: The name of the database file.</span>
+<span class="sd">        :type db_name: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">db_name</span> <span class="o">=</span> <span class="n">db_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>  
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_tables</span><span class="p">()</span>
+
+<div class="viewcode-block" id="DatabaseManager.create_tables">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.create_tables">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create the tables for the database.</span>
+
+<span class="sd">        This method creates the `students`, `instructors`, `courses`, `enrollments`, </span>
+<span class="sd">        and `assignments` tables if they do not already exist in the database.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            CREATE TABLE IF NOT EXISTS students (</span>
+<span class="s1">                id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s1">                name TEXT NOT NULL,</span>
+<span class="s1">                age INTEGER NOT NULL,</span>
+<span class="s1">                email TEXT NOT NULL UNIQUE,</span>
+<span class="s1">                student_id INTEGER NOT NULL UNIQUE</span>
+<span class="s1">            )</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            CREATE TABLE IF NOT EXISTS instructors (</span>
+<span class="s1">                id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s1">                name TEXT NOT NULL,</span>
+<span class="s1">                age INTEGER NOT NULL,</span>
+<span class="s1">                email TEXT NOT NULL UNIQUE,</span>
+<span class="s1">                instructor_id INTEGER NOT NULL UNIQUE</span>
+<span class="s1">            )</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            CREATE TABLE IF NOT EXISTS courses (</span>
+<span class="s1">                id INTEGER PRIMARY KEY AUTOINCREMENT,</span>
+<span class="s1">                course_name TEXT NOT NULL,</span>
+<span class="s1">                course_id INTEGER NOT NULL UNIQUE</span>
+<span class="s1">            )</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            CREATE TABLE IF NOT EXISTS enrollments (</span>
+<span class="s1">                student_id INTEGER NOT NULL,</span>
+<span class="s1">                course_id INTEGER NOT NULL,</span>
+<span class="s1">                PRIMARY KEY (student_id, course_id),</span>
+<span class="s1">                FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,</span>
+<span class="s1">                FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE</span>
+<span class="s1">            )</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            CREATE TABLE IF NOT EXISTS assignments (</span>
+<span class="s1">                instructor_id INTEGER NOT NULL,</span>
+<span class="s1">                course_id INTEGER NOT NULL UNIQUE,</span>
+<span class="s1">                PRIMARY KEY (instructor_id, course_id),</span>
+<span class="s1">                FOREIGN KEY (instructor_id) REFERENCES instructors(id) ON DELETE SET NULL,</span>
+<span class="s1">                FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE</span>
+<span class="s1">            )</span>
+<span class="s1">        &#39;&#39;&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.close">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the connection to the SQLite database.</span>
+<span class="sd">        </span>
+<span class="sd">        This method closes the database connection, ensuring that all resources are released.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.add_student">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.add_student">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a new student to the database.</span>
+
+<span class="sd">        :param name: The name of the student.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The age of the student.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The student&#39;s email address.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :param student_id: A unique identifier for the student.</span>
+<span class="sd">        :type student_id: int</span>
+<span class="sd">        :return: The row ID of the newly inserted student.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            INSERT INTO students (name, age, email, student_id) VALUES (?, ?, ?, ?)</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_all_students">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_all_students">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_all_students</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all students from the database.</span>
+
+<span class="sd">        :return: A list of all students in the database.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM students&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_student_by_id">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_student_by_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_student_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a student from the database by their student ID.</span>
+
+<span class="sd">        :param student_id: The unique identifier of the student.</span>
+<span class="sd">        :type student_id: int</span>
+<span class="sd">        :return: The student record if found, or None if no student matches the ID.</span>
+<span class="sd">        :rtype: sqlite3.Row or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM students WHERE student_id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">student_id</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.update_student">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.update_student">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_db_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update an existing student&#39;s details in the database.</span>
+
+<span class="sd">        :param student_db_id: The unique row ID of the student in the database.</span>
+<span class="sd">        :type student_db_id: int</span>
+<span class="sd">        :param name: The updated name of the student.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The updated age of the student.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The updated email address of the student.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :param student_id: The updated unique student identifier.</span>
+<span class="sd">        :type student_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            UPDATE students SET name = ?, age = ?, email = ?, student_id = ? WHERE id = ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">student_id</span><span class="p">,</span> <span class="n">student_db_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.delete_student">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.delete_student">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete a student from the database by their row ID.</span>
+
+<span class="sd">        :param student_db_id: The unique row ID of the student in the database.</span>
+<span class="sd">        :type student_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;DELETE FROM students WHERE id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">student_db_id</span><span class="p">,))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.add_instructor">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.add_instructor">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_instructor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a new instructor to the database.</span>
+
+<span class="sd">        :param name: The name of the instructor.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The age of the instructor.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The instructor&#39;s email address.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :param instructor_id: A unique identifier for the instructor.</span>
+<span class="sd">        :type instructor_id: int</span>
+<span class="sd">        :return: The row ID of the newly inserted instructor.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            INSERT INTO instructors (name, age, email, instructor_id) VALUES (?, ?, ?, ?)</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_all_instructors">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_all_instructors">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_all_instructors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all instructors from the database.</span>
+
+<span class="sd">        :return: A list of all instructors in the database.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM instructors&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_instructor_by_id">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_instructor_by_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_instructor_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve an instructor from the database by their instructor ID.</span>
+
+<span class="sd">        :param instructor_id: The unique identifier of the instructor.</span>
+<span class="sd">        :type instructor_id: int</span>
+<span class="sd">        :return: The instructor record if found, or None if no instructor matches the ID.</span>
+<span class="sd">        :rtype: sqlite3.Row or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM instructors WHERE instructor_id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">instructor_id</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.update_instructor">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.update_instructor">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_instructor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_db_id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update an existing instructor&#39;s details in the database.</span>
+
+<span class="sd">        :param instructor_db_id: The unique row ID of the instructor in the database.</span>
+<span class="sd">        :type instructor_db_id: int</span>
+<span class="sd">        :param name: The updated name of the instructor.</span>
+<span class="sd">        :type name: str</span>
+<span class="sd">        :param age: The updated age of the instructor.</span>
+<span class="sd">        :type age: int</span>
+<span class="sd">        :param email: The updated email address of the instructor.</span>
+<span class="sd">        :type email: str</span>
+<span class="sd">        :param instructor_id: The updated unique instructor identifier.</span>
+<span class="sd">        :type instructor_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            UPDATE instructors SET name = ?, age = ?, email = ?, instructor_id = ? WHERE id = ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">,</span> <span class="n">instructor_db_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.delete_instructor">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.delete_instructor">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_instructor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete an instructor from the database by their row ID.</span>
+
+<span class="sd">        :param instructor_db_id: The unique row ID of the instructor in the database.</span>
+<span class="sd">        :type instructor_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;DELETE FROM instructors WHERE id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">instructor_db_id</span><span class="p">,))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.add_course">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.add_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">course_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a new course to the database.</span>
+
+<span class="sd">        :param course_name: The name of the course.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        :param course_id: A unique identifier for the course.</span>
+<span class="sd">        :type course_id: int</span>
+<span class="sd">        :return: The row ID of the newly inserted course.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            INSERT INTO courses (course_name, course_id) VALUES (?, ?)</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">course_name</span><span class="p">,</span> <span class="n">course_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_all_courses">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_all_courses">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_all_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all courses from the database.</span>
+
+<span class="sd">        :return: A list of all courses in the database.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM courses&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_course_by_name">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_course_by_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_course_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a course from the database by its name.</span>
+
+<span class="sd">        :param course_name: The name of the course.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        :return: The course record if found, or None if no course matches the name.</span>
+<span class="sd">        :rtype: sqlite3.Row or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM courses WHERE course_name = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">course_name</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_course_by_id">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_course_by_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_course_by_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve a course from the database by its course ID.</span>
+
+<span class="sd">        :param course_id: The unique identifier of the course.</span>
+<span class="sd">        :type course_id: int</span>
+<span class="sd">        :return: The course record if found, or None if no course matches the ID.</span>
+<span class="sd">        :rtype: sqlite3.Row or None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM courses WHERE course_id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">course_id</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.update_course">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.update_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">,</span> <span class="n">course_name</span><span class="p">,</span> <span class="n">course_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update an existing course&#39;s details in the database.</span>
+
+<span class="sd">        :param course_db_id: The unique row ID of the course in the database.</span>
+<span class="sd">        :type course_db_id: int</span>
+<span class="sd">        :param course_name: The updated name of the course.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        :param course_id: The updated unique course identifier.</span>
+<span class="sd">        :type course_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            UPDATE courses SET course_name = ?, course_id = ? WHERE id = ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">course_name</span><span class="p">,</span> <span class="n">course_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.delete_course">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.delete_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete a course from the database by its row ID.</span>
+
+<span class="sd">        :param course_db_id: The unique row ID of the course in the database.</span>
+<span class="sd">        :type course_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;DELETE FROM courses WHERE id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">course_db_id</span><span class="p">,))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.enroll_student_in_course">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.enroll_student_in_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">enroll_student_in_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_db_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Enroll a student in a course.</span>
+
+<span class="sd">        :param student_db_id: The row ID of the student in the database.</span>
+<span class="sd">        :type student_db_id: int</span>
+<span class="sd">        :param course_db_id: The row ID of the course in the database.</span>
+<span class="sd">        :type course_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            INSERT OR IGNORE INTO enrollments (student_id, course_id) VALUES (?, ?)</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">student_db_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_courses_of_student">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_courses_of_student">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_courses_of_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all courses that a student is enrolled in.</span>
+
+<span class="sd">        :param student_db_id: The row ID of the student in the database.</span>
+<span class="sd">        :type student_db_id: int</span>
+<span class="sd">        :return: A list of courses the student is enrolled in.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            SELECT courses.* FROM courses</span>
+<span class="s1">            INNER JOIN enrollments ON courses.id = enrollments.course_id</span>
+<span class="s1">            WHERE enrollments.student_id = ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">student_db_id</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.remove_student_enrollment">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.remove_student_enrollment">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_student_enrollment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_db_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove a student&#39;s enrollment from a course.</span>
+
+<span class="sd">        :param student_db_id: The row ID of the student in the database.</span>
+<span class="sd">        :type student_db_id: int</span>
+<span class="sd">        :param course_db_id: The row ID of the course in the database.</span>
+<span class="sd">        :type course_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;DELETE FROM enrollments WHERE student_id = ? AND course_id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">student_db_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="DatabaseManager.assign_instructor_to_course">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.assign_instructor_to_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">assign_instructor_to_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_db_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign an instructor to a course.</span>
+
+<span class="sd">        :param instructor_db_id: The row ID of the instructor in the database.</span>
+<span class="sd">        :type instructor_db_id: int</span>
+<span class="sd">        :param course_db_id: The row ID of the course in the database.</span>
+<span class="sd">        :type course_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            INSERT OR REPLACE INTO assignments (instructor_id, course_id) VALUES (?, ?)</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="n">instructor_db_id</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.get_courses_of_instructor">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.get_courses_of_instructor">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_courses_of_instructor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve all courses assigned to an instructor.</span>
+
+<span class="sd">        :param instructor_db_id: The row ID of the instructor in the database.</span>
+<span class="sd">        :type instructor_db_id: int</span>
+<span class="sd">        :return: A list of courses assigned to the instructor.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            SELECT courses.* FROM courses</span>
+<span class="s1">            INNER JOIN assignments ON courses.id = assignments.course_id</span>
+<span class="s1">            WHERE assignments.instructor_id = ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">instructor_db_id</span><span class="p">,))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.remove_instructor_assignment">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.remove_instructor_assignment">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_instructor_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_db_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove the instructor&#39;s assignment from a course.</span>
+
+<span class="sd">        :param course_db_id: The row ID of the course in the database.</span>
+<span class="sd">        :type course_db_id: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;DELETE FROM assignments WHERE course_id = ?&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="p">(</span><span class="n">course_db_id</span><span class="p">,))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="DatabaseManager.search_students">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.search_students">[docs]</a>
+    <span class="k">def</span> <span class="nf">search_students</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_query</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for students in the database by name or student ID.</span>
+
+<span class="sd">        This method performs a search on the `students` table, allowing partial matches</span>
+<span class="sd">        for the student&#39;s name or student ID using a SQL `LIKE` query.</span>
+
+<span class="sd">        :param search_query: The search term to match against student names or IDs.</span>
+<span class="sd">        :type search_query: str</span>
+<span class="sd">        :return: A list of students matching the search query.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            SELECT * FROM students</span>
+<span class="s1">            WHERE name LIKE ? OR student_id LIKE ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;%</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;%</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.search_instructors">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.search_instructors">[docs]</a>
+    <span class="k">def</span> <span class="nf">search_instructors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_query</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for instructors in the database by name or instructor ID.</span>
+
+<span class="sd">        This method performs a search on the `instructors` table, allowing partial matches</span>
+<span class="sd">        for the instructor&#39;s name or instructor ID using a SQL `LIKE` query.</span>
+
+<span class="sd">        :param search_query: The search term to match against instructor names or IDs.</span>
+<span class="sd">        :type search_query: str</span>
+<span class="sd">        :return: A list of instructors matching the search query.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            SELECT * FROM instructors</span>
+<span class="s1">            WHERE name LIKE ? OR instructor_id LIKE ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;%</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;%</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.search_courses">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.search_courses">[docs]</a>
+    <span class="k">def</span> <span class="nf">search_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">search_query</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for courses in the database by course name or course ID.</span>
+
+<span class="sd">        This method performs a search on the `courses` table, allowing partial matches</span>
+<span class="sd">        for the course name or course ID using a SQL `LIKE` query.</span>
+
+<span class="sd">        :param search_query: The search term to match against course names or IDs.</span>
+<span class="sd">        :type search_query: str</span>
+<span class="sd">        :return: A list of courses matching the search query.</span>
+<span class="sd">        :rtype: list[sqlite3.Row]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">            SELECT * FROM courses</span>
+<span class="s1">            WHERE course_name LIKE ? OR course_id LIKE ?</span>
+<span class="s1">        &#39;&#39;&#39;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;%</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;%</span><span class="si">{</span><span class="n">search_query</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="DatabaseManager.backup_database">
+<a class="viewcode-back" href="../databases.html#databases.DatabaseManager.backup_database">[docs]</a>
+    <span class="k">def</span> <span class="nf">backup_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">backup_file_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a backup of the database file.</span>
+
+<span class="sd">        This method closes the current database connection, copies the database file to the specified</span>
+<span class="sd">        backup location using `shutil.copy`, and then reopens the connection.</span>
+
+<span class="sd">        :param backup_file_path: The file path where the database backup should be saved.</span>
+<span class="sd">        :type backup_file_path: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">shutil</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">,</span> <span class="n">backup_file_path</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">db_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
