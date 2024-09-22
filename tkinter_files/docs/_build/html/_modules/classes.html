@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>classes &mdash; School Management System Tkinter 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d7bb8d4d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            School Management System Tkinter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">LAB2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">School Management System Tkinter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">classes</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for classes</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">closing</span>
+
+<span class="kn">from</span> <span class="nn">database_setup</span> <span class="kn">import</span> <span class="n">Database</span>
+
+<span class="n">db</span> <span class="o">=</span> <span class="n">Database</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Person">
+<a class="viewcode-back" href="../classes.html#classes.Person">[docs]</a>
+<span class="k">class</span> <span class="nc">Person</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a Person.</span>
+
+<span class="sd">    :param name: The name of the person.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: The age of the person.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param _email: The email address of the person (treated as a protected attribute).</span>
+<span class="sd">    :type _email: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_email</span> <span class="o">=</span> <span class="n">_email</span>
+
+<div class="viewcode-block" id="Person.get_name">
+<a class="viewcode-back" href="../classes.html#classes.Person.get_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the name of the person.</span>
+
+<span class="sd">        :returns: The person&#39;s name.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
+
+
+<div class="viewcode-block" id="Person.set_name">
+<a class="viewcode-back" href="../classes.html#classes.Person.set_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the name of the person.</span>
+
+<span class="sd">        :param value: The new name of the person.</span>
+<span class="sd">        :type value: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="Person.get_age">
+<a class="viewcode-back" href="../classes.html#classes.Person.get_age">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_age</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the age of the person.</span>
+
+<span class="sd">        :returns: The person&#39;s age.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span></div>
+
+
+<div class="viewcode-block" id="Person.set_age">
+<a class="viewcode-back" href="../classes.html#classes.Person.set_age">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_age</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the age of the person.</span>
+
+<span class="sd">        :param value: The new age of the person.</span>
+<span class="sd">        :type value: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="Person.get_email">
+<a class="viewcode-back" href="../classes.html#classes.Person.get_email">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the email of the person.</span>
+
+<span class="sd">        :returns: The person&#39;s email (protected attribute).</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span></div>
+
+
+<div class="viewcode-block" id="Person.introduce">
+<a class="viewcode-back" href="../classes.html#classes.Person.introduce">[docs]</a>
+    <span class="k">def</span> <span class="nf">introduce</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print a short introduction with the person&#39;s name, age, and email.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, I am&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;and I am&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="s2">&quot;years old. My email is&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Person.serialize">
+<a class="viewcode-back" href="../classes.html#classes.Person.serialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the person object to a dictionary.</span>
+
+<span class="sd">        :returns: A dictionary containing the person&#39;s details.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Person.deserialize">
+<a class="viewcode-back" href="../classes.html#classes.Person.deserialize">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deserialize a dictionary into a Person object.</span>
+
+<span class="sd">        :param data: A dictionary containing the person&#39;s details.</span>
+<span class="sd">        :type data: dict</span>
+<span class="sd">        :returns: A new instance of the Person class.</span>
+<span class="sd">        :rtype: Person</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Person</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Student">
+<a class="viewcode-back" href="../classes.html#classes.Student">[docs]</a>
+<span class="k">class</span> <span class="nc">Student</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a Student, which is a subclass of Person.</span>
+
+<span class="sd">    :param name: The name of the student.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: The age of the student.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param _email: The email address of the student (inherited from Person).</span>
+<span class="sd">    :type _email: str</span>
+<span class="sd">    :param student_id: The unique student ID.</span>
+<span class="sd">    :type student_id: str</span>
+<span class="sd">    :param registered_courses: A list of registered courses for the student.</span>
+<span class="sd">    :type registered_courses: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">student_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">registered_courses</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">_email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span> <span class="o">=</span> <span class="n">registered_courses</span>
+
+<div class="viewcode-block" id="Student.get_student_id">
+<a class="viewcode-back" href="../classes.html#classes.Student.get_student_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_student_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the student&#39;s ID.</span>
+
+<span class="sd">        :returns: The student ID.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span></div>
+
+
+<div class="viewcode-block" id="Student.set_student_id">
+<a class="viewcode-back" href="../classes.html#classes.Student.set_student_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_student_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the student&#39;s ID.</span>
+
+<span class="sd">        :param student_id: The new student ID.</span>
+<span class="sd">        :type student_id: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span> <span class="o">=</span> <span class="n">student_id</span></div>
+
+
+<div class="viewcode-block" id="Student.get_registered_courses">
+<a class="viewcode-back" href="../classes.html#classes.Student.get_registered_courses">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_registered_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the list of registered courses.</span>
+
+<span class="sd">        :returns: A list of registered courses.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span></div>
+
+
+<div class="viewcode-block" id="Student.set_registered_courses">
+<a class="viewcode-back" href="../classes.html#classes.Student.set_registered_courses">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_registered_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registered_courses</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the registered courses for the student.</span>
+
+<span class="sd">        :param registered_courses: A list of new registered courses.</span>
+<span class="sd">        :type registered_courses: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span> <span class="o">=</span> <span class="n">registered_courses</span></div>
+
+
+<div class="viewcode-block" id="Student.register_course">
+<a class="viewcode-back" href="../classes.html#classes.Student.register_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">register_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Register a new course for the student.</span>
+
+<span class="sd">        :param course: The course to be added.</span>
+<span class="sd">        :type course: Course</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Student.serialize">
+<a class="viewcode-back" href="../classes.html#classes.Student.serialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the student object to a dictionary.</span>
+
+<span class="sd">        :returns: A dictionary containing the student&#39;s details including registered courses.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span>
+            <span class="s1">&#39;student_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span>
+            <span class="s1">&#39;registered_courses&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">course</span><span class="o">.</span><span class="n">course_id</span> <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">]</span> 
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Student.deserialize">
+<a class="viewcode-back" href="../classes.html#classes.Student.deserialize">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">courses</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deserialize a dictionary into a Student object.</span>
+
+<span class="sd">        :param data: A dictionary containing the student&#39;s details.</span>
+<span class="sd">        :type data: dict</span>
+<span class="sd">        :param courses: A dictionary of course objects with course IDs as keys.</span>
+<span class="sd">        :type courses: dict</span>
+<span class="sd">        :returns: A new instance of the Student class.</span>
+<span class="sd">        :rtype: Student</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">registered_courses</span> <span class="o">=</span> <span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="n">course_id</span><span class="p">]</span> <span class="k">for</span> <span class="n">course_id</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;registered_courses&#39;</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">Student</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;student_id&#39;</span><span class="p">],</span> <span class="n">registered_courses</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Student.save_to_db">
+<a class="viewcode-back" href="../classes.html#classes.Student.save_to_db">[docs]</a>
+    <span class="k">def</span> <span class="nf">save_to_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the student&#39;s details to the database.</span>
+
+<span class="sd">        This method inserts or replaces the student&#39;s record in the Students table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT OR REPLACE INTO Students (student_id, name, age, email)</span>
+<span class="s1">                VALUES (?, ?, ?, ?)</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+    
+<div class="viewcode-block" id="Student.edit_in_db">
+<a class="viewcode-back" href="../classes.html#classes.Student.edit_in_db">[docs]</a>
+    <span class="k">def</span> <span class="nf">edit_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the student&#39;s details in the database.</span>
+
+<span class="sd">        This method updates the student&#39;s record in the Students table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                UPDATE Students</span>
+<span class="s1">                SET name = ?, age = ?, email = ?</span>
+<span class="s1">                WHERE student_id = ?</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+    
+<div class="viewcode-block" id="Student.handle_course_enrollment">
+<a class="viewcode-back" href="../classes.html#classes.Student.handle_course_enrollment">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_course_enrollment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the student&#39;s course enrollments to the database.</span>
+
+<span class="sd">        This method inserts or replaces records in the Enrollments table for the student&#39;s registered courses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">registered_courses</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    INSERT OR REPLACE INTO Enrollments (student_id, course_id)</span>
+<span class="s1">                    VALUES (?, ?)</span>
+<span class="s1">                &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span> <span class="n">course</span><span class="o">.</span><span class="n">course_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Instructor">
+<a class="viewcode-back" href="../classes.html#classes.Instructor">[docs]</a>
+<span class="k">class</span> <span class="nc">Instructor</span><span class="p">(</span><span class="n">Person</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing an Instructor, which is a subclass of Person.</span>
+
+<span class="sd">    :param name: The name of the instructor.</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param age: The age of the instructor.</span>
+<span class="sd">    :type age: int</span>
+<span class="sd">    :param _email: The email address of the instructor (inherited from Person).</span>
+<span class="sd">    :type _email: str</span>
+<span class="sd">    :param instructor_id: The unique ID of the instructor.</span>
+<span class="sd">    :type instructor_id: str</span>
+<span class="sd">    :param assigned_courses: A list of courses assigned to the instructor.</span>
+<span class="sd">    :type assigned_courses: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">_email</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">assigned_courses</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">_email</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span> <span class="o">=</span> <span class="n">assigned_courses</span>
+
+<div class="viewcode-block" id="Instructor.get_instructor_id">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.get_instructor_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_instructor_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the instructor&#39;s ID.</span>
+
+<span class="sd">        :returns: The instructor ID.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span></div>
+
+
+<div class="viewcode-block" id="Instructor.set_instructor_id">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.set_instructor_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_instructor_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the instructor&#39;s ID.</span>
+
+<span class="sd">        :param instructor_id: The new instructor ID.</span>
+<span class="sd">        :type instructor_id: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span> <span class="o">=</span> <span class="n">instructor_id</span></div>
+
+
+<div class="viewcode-block" id="Instructor.get_assigned_courses">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.get_assigned_courses">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_assigned_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the list of assigned courses.</span>
+
+<span class="sd">        :returns: A list of courses assigned to the instructor.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span></div>
+
+
+<div class="viewcode-block" id="Instructor.set_assigned_courses">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.set_assigned_courses">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_assigned_courses</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assigned_courses</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the assigned courses for the instructor.</span>
+
+<span class="sd">        :param assigned_courses: A new list of assigned courses.</span>
+<span class="sd">        :type assigned_courses: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span> <span class="o">=</span> <span class="n">assigned_courses</span></div>
+
+
+<div class="viewcode-block" id="Instructor.assign_course">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.assign_course">[docs]</a>
+    <span class="k">def</span> <span class="nf">assign_course</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign a course to the instructor and save it to the database.</span>
+
+<span class="sd">        :param course: The course to assign.</span>
+<span class="sd">        :type course: Course</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">course</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT OR REPLACE INTO Assignments (instructor_id, course_id)</span>
+<span class="s1">                VALUES (?, ?)</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">course</span><span class="o">.</span><span class="n">course_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Instructor.serialize">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.serialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the instructor object to a dictionary.</span>
+
+<span class="sd">        :returns: A dictionary containing the instructor&#39;s details, including assigned courses.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span>
+            <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span>
+            <span class="s1">&#39;instructor_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span>
+            <span class="s1">&#39;assigned_courses&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">course</span><span class="o">.</span><span class="n">course_id</span> <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">]</span>  
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Instructor.deserialize">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.deserialize">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">courses</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deserialize a dictionary into an Instructor object.</span>
+
+<span class="sd">        :param data: A dictionary containing the instructor&#39;s details.</span>
+<span class="sd">        :type data: dict</span>
+<span class="sd">        :param courses: A dictionary of course objects with course IDs as keys.</span>
+<span class="sd">        :type courses: dict</span>
+<span class="sd">        :returns: A new instance of the Instructor class.</span>
+<span class="sd">        :rtype: Instructor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">assigned_courses</span> <span class="o">=</span> <span class="p">[</span><span class="n">courses</span><span class="p">[</span><span class="n">course_id</span><span class="p">]</span> <span class="k">for</span> <span class="n">course_id</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;assigned_courses&#39;</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">Instructor</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;instructor_id&#39;</span><span class="p">],</span> <span class="n">assigned_courses</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Instructor.save_to_db">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.save_to_db">[docs]</a>
+    <span class="k">def</span> <span class="nf">save_to_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the instructor&#39;s details to the database.</span>
+
+<span class="sd">        This method inserts or replaces the instructor&#39;s record in the Instructors table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT OR REPLACE INTO Instructors (instructor_id, name, age, email)</span>
+<span class="s1">                VALUES (?, ?, ?, ?)</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Instructor.edit_in_db">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.edit_in_db">[docs]</a>
+    <span class="k">def</span> <span class="nf">edit_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the instructor&#39;s details in the database.</span>
+
+<span class="sd">        This method updates the instructor&#39;s record in the Instructors table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                UPDATE Instructors</span>
+<span class="s1">                SET name = ?, age = ?, email = ?</span>
+<span class="s1">                WHERE instructor_id = ?</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_email</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Instructor.handle_course_assignment">
+<a class="viewcode-back" href="../classes.html#classes.Instructor.handle_course_assignment">[docs]</a>
+    <span class="k">def</span> <span class="nf">handle_course_assignment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the instructor&#39;s course assignments to the database.</span>
+
+<span class="sd">        This method inserts or replaces records in the Assignments table for the instructor&#39;s assigned courses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">course</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">assigned_courses</span><span class="p">:</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                    INSERT OR REPLACE INTO Assignments (instructor_id, course_id)</span>
+<span class="s1">                    VALUES (?, ?)</span>
+<span class="s1">                &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instructor_id</span><span class="p">,</span> <span class="n">course</span><span class="o">.</span><span class="n">course_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="Course">
+<a class="viewcode-back" href="../classes.html#classes.Course">[docs]</a>
+<span class="k">class</span> <span class="nc">Course</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing a Course.</span>
+
+<span class="sd">    :param course_id: The unique identifier for the course.</span>
+<span class="sd">    :type course_id: str</span>
+<span class="sd">    :param course_name: The name of the course.</span>
+<span class="sd">    :type course_name: str</span>
+<span class="sd">    :param instructor: The instructor teaching the course.</span>
+<span class="sd">    :type instructor: Instructor</span>
+<span class="sd">    :param enrolled_students: A list of students enrolled in the course.</span>
+<span class="sd">    :type enrolled_students: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">course_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">instructor</span><span class="p">:</span> <span class="n">Instructor</span><span class="p">,</span> <span class="n">enrolled_students</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span> <span class="o">=</span> <span class="n">course_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="n">instructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span> <span class="o">=</span> <span class="n">enrolled_students</span>
+
+<div class="viewcode-block" id="Course.get_course_id">
+<a class="viewcode-back" href="../classes.html#classes.Course.get_course_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_course_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the course ID.</span>
+
+<span class="sd">        :returns: The unique course ID.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span></div>
+
+
+<div class="viewcode-block" id="Course.set_course_id">
+<a class="viewcode-back" href="../classes.html#classes.Course.set_course_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_course_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the course ID.</span>
+
+<span class="sd">        :param course_id: The new course ID.</span>
+<span class="sd">        :type course_id: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span> <span class="o">=</span> <span class="n">course_id</span></div>
+
+
+<div class="viewcode-block" id="Course.get_course_name">
+<a class="viewcode-back" href="../classes.html#classes.Course.get_course_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_course_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the course name.</span>
+
+<span class="sd">        :returns: The name of the course.</span>
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span></div>
+
+
+<div class="viewcode-block" id="Course.set_course_name">
+<a class="viewcode-back" href="../classes.html#classes.Course.set_course_name">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_course_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">course_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the course name.</span>
+
+<span class="sd">        :param course_name: The new course name.</span>
+<span class="sd">        :type course_name: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span> <span class="o">=</span> <span class="n">course_name</span></div>
+
+
+<div class="viewcode-block" id="Course.get_instructor">
+<a class="viewcode-back" href="../classes.html#classes.Course.get_instructor">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_instructor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the instructor of the course.</span>
+
+<span class="sd">        :returns: The instructor assigned to the course.</span>
+<span class="sd">        :rtype: Instructor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span></div>
+
+
+<div class="viewcode-block" id="Course.set_instructor">
+<a class="viewcode-back" href="../classes.html#classes.Course.set_instructor">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_instructor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructor</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the instructor for the course.</span>
+
+<span class="sd">        :param instructor: The new instructor for the course.</span>
+<span class="sd">        :type instructor: Instructor</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="o">=</span> <span class="n">instructor</span></div>
+
+
+<div class="viewcode-block" id="Course.get_enrolled_students">
+<a class="viewcode-back" href="../classes.html#classes.Course.get_enrolled_students">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_enrolled_students</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the list of enrolled students.</span>
+
+<span class="sd">        :returns: A list of students enrolled in the course.</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span></div>
+
+
+<div class="viewcode-block" id="Course.set_enrolled_students">
+<a class="viewcode-back" href="../classes.html#classes.Course.set_enrolled_students">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_enrolled_students</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enrolled_students</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the list of enrolled students.</span>
+
+<span class="sd">        :param enrolled_students: A new list of students to enroll.</span>
+<span class="sd">        :type enrolled_students: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span> <span class="o">=</span> <span class="n">enrolled_students</span></div>
+
+
+<div class="viewcode-block" id="Course.add_student">
+<a class="viewcode-back" href="../classes.html#classes.Course.add_student">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_student</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">student</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add a student to the course and update the database.</span>
+
+<span class="sd">        :param student: The student to enroll in the course.</span>
+<span class="sd">        :type student: Student</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">student</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT OR IGNORE INTO Enrollments (student_id, course_id)</span>
+<span class="s1">                VALUES (?, ?)</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">student_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Course.serialize">
+<a class="viewcode-back" href="../classes.html#classes.Course.serialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serialize the course object to a dictionary.</span>
+
+<span class="sd">        :returns: A dictionary containing the course&#39;s details, including the instructor ID and enrolled students.</span>
+<span class="sd">        :rtype: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;course_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span>
+            <span class="s1">&#39;course_name&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span><span class="p">,</span>
+            <span class="s1">&#39;instructor_id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">instructor_id</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>  
+            <span class="s1">&#39;enrolled_students&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">student</span><span class="o">.</span><span class="n">student_id</span> <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enrolled_students</span><span class="p">]</span>
+        <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Course.deserialize">
+<a class="viewcode-back" href="../classes.html#classes.Course.deserialize">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">deserialize</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">instructors</span><span class="p">,</span> <span class="n">students</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deserialize a dictionary into a Course object.</span>
+
+<span class="sd">        :param data: A dictionary containing the course&#39;s details.</span>
+<span class="sd">        :type data: dict</span>
+<span class="sd">        :param instructors: A dictionary of instructors with instructor IDs as keys.</span>
+<span class="sd">        :type instructors: dict</span>
+<span class="sd">        :param students: A dictionary of students with student IDs as keys.</span>
+<span class="sd">        :type students: dict</span>
+<span class="sd">        :returns: A new instance of the Course class.</span>
+<span class="sd">        :rtype: Course</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">instructor</span> <span class="o">=</span> <span class="n">instructors</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;instructor_id&#39;</span><span class="p">])</span>
+        <span class="n">enrolled_students</span> <span class="o">=</span> <span class="p">[</span><span class="n">students</span><span class="p">[</span><span class="n">student_id</span><span class="p">]</span> <span class="k">for</span> <span class="n">student_id</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;enrolled_students&#39;</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">Course</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;course_id&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;course_name&#39;</span><span class="p">],</span> <span class="n">instructor</span><span class="p">,</span> <span class="n">enrolled_students</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Course.save_to_db">
+<a class="viewcode-back" href="../classes.html#classes.Course.save_to_db">[docs]</a>
+    <span class="k">def</span> <span class="nf">save_to_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the course&#39;s details to the database.</span>
+
+<span class="sd">        This method inserts or replaces the course&#39;s record in the Courses table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                INSERT OR REPLACE INTO Courses (course_id, course_name, instructor_id)</span>
+<span class="s1">                VALUES (?, ?, ?)</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span><span class="o">.</span><span class="n">instructor_id</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructor</span> <span class="k">else</span> <span class="kc">None</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Course.edit_in_db">
+<a class="viewcode-back" href="../classes.html#classes.Course.edit_in_db">[docs]</a>
+    <span class="k">def</span> <span class="nf">edit_in_db</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update the course&#39;s details in the database.</span>
+
+<span class="sd">        This method updates the course&#39;s record in the Courses table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                UPDATE Courses</span>
+<span class="s1">                SET name = ?</span>
+<span class="s1">                WHERE course_id = ?</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">course_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">course_id</span><span class="p">))</span>
+            <span class="n">db</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sharafeddine Sharafeddine.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
