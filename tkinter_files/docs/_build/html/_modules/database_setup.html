@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>database_setup &mdash; School Management System Tkinter 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d7bb8d4d"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            School Management System Tkinter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">LAB2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">School Management System Tkinter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">database_setup</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for database_setup</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">closing</span>
+
+<div class="viewcode-block" id="Database">
+<a class="viewcode-back" href="../database_setup.html#database_setup.Database">[docs]</a>
+<span class="k">class</span> <span class="nc">Database</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class representing the database for a school management system.</span>
+
+<span class="sd">    :param db_name: The name of the SQLite database file (default is &#39;schoolmanagementsystem.db&#39;).</span>
+<span class="sd">    :type db_name: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">db_name</span><span class="o">=</span><span class="s1">&#39;schoolmanagementsystem.db&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_tables</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Database.create_tables">
+<a class="viewcode-back" href="../database_setup.html#database_setup.Database.create_tables">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create the necessary tables for the system if they do not already exist.</span>
+
+<span class="sd">        This method creates the following tables:</span>
+<span class="sd">        - Students: Contains student information (student_id, name, age, email).</span>
+<span class="sd">        - Instructors: Contains instructor information (instructor_id, name, age, email).</span>
+<span class="sd">        - Courses: Contains course information (course_id, course_name, instructor_id).</span>
+<span class="sd">        - Enrollments: Contains enrollment information, linking students to courses.</span>
+<span class="sd">        - Assignments: Contains assignment information, linking instructors to courses.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+            
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS Students (</span>
+<span class="s1">                    student_id TEXT PRIMARY KEY,</span>
+<span class="s1">                    name TEXT NOT NULL,</span>
+<span class="s1">                    age INTEGER NOT NULL,</span>
+<span class="s1">                    email TEXT NOT NULL</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS Instructors (</span>
+<span class="s1">                    instructor_id TEXT PRIMARY KEY,</span>
+<span class="s1">                    name TEXT NOT NULL,</span>
+<span class="s1">                    age INTEGER NOT NULL,</span>
+<span class="s1">                    email TEXT NOT NULL</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS Courses (</span>
+<span class="s1">                    course_id TEXT PRIMARY KEY,</span>
+<span class="s1">                    course_name TEXT NOT NULL,</span>
+<span class="s1">                    instructor_id TEXT,</span>
+<span class="s1">                    FOREIGN KEY(instructor_id) REFERENCES Instructors(instructor_id)</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS Enrollments (</span>
+<span class="s1">                    student_id TEXT,</span>
+<span class="s1">                    course_id TEXT,</span>
+<span class="s1">                    PRIMARY KEY (student_id, course_id),</span>
+<span class="s1">                    FOREIGN KEY(student_id) REFERENCES Students(student_id),</span>
+<span class="s1">                    FOREIGN KEY(course_id) REFERENCES Courses(course_id)</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            
+            <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">                CREATE TABLE IF NOT EXISTS Assignments (</span>
+<span class="s1">                    instructor_id TEXT,</span>
+<span class="s1">                    course_id TEXT UNIQUE,</span>
+<span class="s1">                    PRIMARY KEY (instructor_id, course_id),</span>
+<span class="s1">                    FOREIGN KEY(instructor_id) REFERENCES Instructors(instructor_id),</span>
+<span class="s1">                    FOREIGN KEY(course_id) REFERENCES Courses(course_id)</span>
+<span class="s1">                )</span>
+<span class="s1">            &#39;&#39;&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Database.close">
+<a class="viewcode-back" href="../database_setup.html#database_setup.Database.close">[docs]</a>
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close the database connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+ 
+<div class="viewcode-block" id="Database.clear_all_tables">
+<a class="viewcode-back" href="../database_setup.html#database_setup.Database.clear_all_tables">[docs]</a>
+    <span class="k">def</span> <span class="nf">clear_all_tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clear all data from the database tables.</span>
+
+<span class="sd">        This method disables foreign key constraints, deletes all data from the </span>
+<span class="sd">        Enrollments, Assignments, Courses, Instructors, and Students tables, </span>
+<span class="sd">        and then re-enables foreign key constraints.</span>
+
+<span class="sd">        :returns: 1 if the operation is successful, 0 if there is an error.</span>
+<span class="sd">        :rtype: int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">closing</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">())</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
+                
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;PRAGMA foreign_keys = OFF;&#39;</span><span class="p">)</span>
+                
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;DELETE FROM Enrollments;&#39;</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;DELETE FROM Assignments;&#39;</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;DELETE FROM Courses;&#39;</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;DELETE FROM Instructors;&#39;</span><span class="p">)</span>
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;DELETE FROM Students;&#39;</span><span class="p">)</span>
+
+                <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s1">&#39;PRAGMA foreign_keys = ON;&#39;</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>    </div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sharafeddine Sharafeddine.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

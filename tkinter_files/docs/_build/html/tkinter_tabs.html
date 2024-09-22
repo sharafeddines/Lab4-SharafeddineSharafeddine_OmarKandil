@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tkinter_tabs module &mdash; School Management System Tkinter 00.00.01 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d7bb8d4d"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="tkinter_main module" href="tkinter_main.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            School Management System Tkinter
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">LAB2</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="classes.html">classes module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database_setup.html">database_setup module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tkinter_main.html">tkinter_main module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">tkinter_tabs module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tkinter_tabs.AssignInstructorTab"><code class="docutils literal notranslate"><span class="pre">AssignInstructorTab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.AssignInstructorTab.assign_instructor"><code class="docutils literal notranslate"><span class="pre">AssignInstructorTab.assign_instructor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.AssignInstructorTab.populate_dropdowns"><code class="docutils literal notranslate"><span class="pre">AssignInstructorTab.populate_dropdowns()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.AssignInstructorTab.update_courses"><code class="docutils literal notranslate"><span class="pre">AssignInstructorTab.update_courses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.AssignInstructorTab.update_instructors"><code class="docutils literal notranslate"><span class="pre">AssignInstructorTab.update_instructors()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tkinter_tabs.CourseTab"><code class="docutils literal notranslate"><span class="pre">CourseTab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.add_course"><code class="docutils literal notranslate"><span class="pre">CourseTab.add_course()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.clear_course_search"><code class="docutils literal notranslate"><span class="pre">CourseTab.clear_course_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.clear_form"><code class="docutils literal notranslate"><span class="pre">CourseTab.clear_form()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.delete_course"><code class="docutils literal notranslate"><span class="pre">CourseTab.delete_course()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.edit_course"><code class="docutils literal notranslate"><span class="pre">CourseTab.edit_course()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.insert_course_into_treeview"><code class="docutils literal notranslate"><span class="pre">CourseTab.insert_course_into_treeview()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.search_course"><code class="docutils literal notranslate"><span class="pre">CourseTab.search_course()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.set_assign_instructor_tab"><code class="docutils literal notranslate"><span class="pre">CourseTab.set_assign_instructor_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.set_enroll_students_tab"><code class="docutils literal notranslate"><span class="pre">CourseTab.set_enroll_students_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.set_instructors_tab"><code class="docutils literal notranslate"><span class="pre">CourseTab.set_instructors_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.set_students_tab"><code class="docutils literal notranslate"><span class="pre">CourseTab.set_students_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.update_course"><code class="docutils literal notranslate"><span class="pre">CourseTab.update_course()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.CourseTab.update_course_treeview"><code class="docutils literal notranslate"><span class="pre">CourseTab.update_course_treeview()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab"><code class="docutils literal notranslate"><span class="pre">EnrollStudentsTab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab.enroll_student"><code class="docutils literal notranslate"><span class="pre">EnrollStudentsTab.enroll_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab.populate_dropdowns"><code class="docutils literal notranslate"><span class="pre">EnrollStudentsTab.populate_dropdowns()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab.update_courses"><code class="docutils literal notranslate"><span class="pre">EnrollStudentsTab.update_courses()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab.update_students"><code class="docutils literal notranslate"><span class="pre">EnrollStudentsTab.update_students()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tkinter_tabs.InstructorTab"><code class="docutils literal notranslate"><span class="pre">InstructorTab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.add_instructor"><code class="docutils literal notranslate"><span class="pre">InstructorTab.add_instructor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.clear_form"><code class="docutils literal notranslate"><span class="pre">InstructorTab.clear_form()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.clear_instructor_search"><code class="docutils literal notranslate"><span class="pre">InstructorTab.clear_instructor_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.delete_instructor"><code class="docutils literal notranslate"><span class="pre">InstructorTab.delete_instructor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.edit_instructor"><code class="docutils literal notranslate"><span class="pre">InstructorTab.edit_instructor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.insert_instructor_into_treeview"><code class="docutils literal notranslate"><span class="pre">InstructorTab.insert_instructor_into_treeview()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.search_instructor"><code class="docutils literal notranslate"><span class="pre">InstructorTab.search_instructor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.set_assign_instructor_tab"><code class="docutils literal notranslate"><span class="pre">InstructorTab.set_assign_instructor_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.set_course_tab"><code class="docutils literal notranslate"><span class="pre">InstructorTab.set_course_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.update_instructor"><code class="docutils literal notranslate"><span class="pre">InstructorTab.update_instructor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.InstructorTab.update_instructor_treeview"><code class="docutils literal notranslate"><span class="pre">InstructorTab.update_instructor_treeview()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tkinter_tabs.LoadAndStoreDataTab"><code class="docutils literal notranslate"><span class="pre">LoadAndStoreDataTab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.LoadAndStoreDataTab.backup_database"><code class="docutils literal notranslate"><span class="pre">LoadAndStoreDataTab.backup_database()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.LoadAndStoreDataTab.load_all_data"><code class="docutils literal notranslate"><span class="pre">LoadAndStoreDataTab.load_all_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.LoadAndStoreDataTab.save_all_data"><code class="docutils literal notranslate"><span class="pre">LoadAndStoreDataTab.save_all_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.LoadAndStoreDataTab.save_all_data_as_csv"><code class="docutils literal notranslate"><span class="pre">LoadAndStoreDataTab.save_all_data_as_csv()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tkinter_tabs.StudentTab"><code class="docutils literal notranslate"><span class="pre">StudentTab</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.add_student"><code class="docutils literal notranslate"><span class="pre">StudentTab.add_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.clear_form"><code class="docutils literal notranslate"><span class="pre">StudentTab.clear_form()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.clear_student_search"><code class="docutils literal notranslate"><span class="pre">StudentTab.clear_student_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.delete_student"><code class="docutils literal notranslate"><span class="pre">StudentTab.delete_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.edit_student"><code class="docutils literal notranslate"><span class="pre">StudentTab.edit_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.search_student"><code class="docutils literal notranslate"><span class="pre">StudentTab.search_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.set_assign_instructor_tab"><code class="docutils literal notranslate"><span class="pre">StudentTab.set_assign_instructor_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.set_courses_tab"><code class="docutils literal notranslate"><span class="pre">StudentTab.set_courses_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.set_enroll_students_tab"><code class="docutils literal notranslate"><span class="pre">StudentTab.set_enroll_students_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.set_instructors_tab"><code class="docutils literal notranslate"><span class="pre">StudentTab.set_instructors_tab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.update_student"><code class="docutils literal notranslate"><span class="pre">StudentTab.update_student()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tkinter_tabs.StudentTab.update_student_treeview"><code class="docutils literal notranslate"><span class="pre">StudentTab.update_student_treeview()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">School Management System Tkinter</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">LAB2</a></li>
+      <li class="breadcrumb-item active">tkinter_tabs module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tkinter_tabs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tkinter_tabs">
+<span id="tkinter-tabs-module"></span><h1>tkinter_tabs module<a class="headerlink" href="#module-tkinter_tabs" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="tkinter_tabs.AssignInstructorTab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter_tabs.</span></span><span class="sig-name descname"><span class="pre">AssignInstructorTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructors_tab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">courses_tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#AssignInstructorTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.AssignInstructorTab" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for assigning instructors to courses in a Tkinter notebook widget. This tab allows users to select an instructor and a course, then assign the instructor to the course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notebook</strong> (<em>ttk.Notebook</em>) – The Tkinter notebook widget where the ‘Assign Instructor’ tab will be added.</p></li>
+<li><p><strong>instructors_tab</strong> (<a class="reference internal" href="#tkinter_tabs.InstructorTab" title="tkinter_tabs.InstructorTab"><em>InstructorTab</em></a>) – The reference to the instructors tab.</p></li>
+<li><p><strong>courses_tab</strong> (<a class="reference internal" href="#tkinter_tabs.CourseTab" title="tkinter_tabs.CourseTab"><em>CourseTab</em></a>) – The reference to the courses tab.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.AssignInstructorTab.assign_instructor">
+<span class="sig-name descname"><span class="pre">assign_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#AssignInstructorTab.assign_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.AssignInstructorTab.assign_instructor" title="Link to this definition"></a></dt>
+<dd><p>Assign the selected instructor to the selected course.</p>
+<p>Validates the selections and checks if the course is already assigned to an instructor. If successful, the instructor is assigned to the course and the Treeviews are updated.
+Displays success or error messages based on the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the selection of an instructor or course is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.AssignInstructorTab.populate_dropdowns">
+<span class="sig-name descname"><span class="pre">populate_dropdowns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#AssignInstructorTab.populate_dropdowns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.AssignInstructorTab.populate_dropdowns" title="Link to this definition"></a></dt>
+<dd><p>Populate the dropdown menus with available instructors and courses that don’t have an assigned instructor.</p>
+<p>Sets the values for both the instructor dropdown and the course dropdown. Disables the assign button if no instructors or courses are available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.AssignInstructorTab.update_courses">
+<span class="sig-name descname"><span class="pre">update_courses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#AssignInstructorTab.update_courses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.AssignInstructorTab.update_courses" title="Link to this definition"></a></dt>
+<dd><p>Update the course dropdown when there are changes in the list of available courses.</p>
+<p>Calls <cite>populate_dropdowns()</cite> to refresh the list of courses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.AssignInstructorTab.update_instructors">
+<span class="sig-name descname"><span class="pre">update_instructors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#AssignInstructorTab.update_instructors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.AssignInstructorTab.update_instructors" title="Link to this definition"></a></dt>
+<dd><p>Update the instructor dropdown when there are changes in the list of available instructors.</p>
+<p>Calls <cite>populate_dropdowns()</cite> to refresh the list of instructors.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter_tabs.</span></span><span class="sig-name descname"><span class="pre">CourseTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing the ‘Course’ tab in a Tkinter notebook widget. This tab allows users to add, edit, search, and delete courses, as well as view course details in a Treeview widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>notebook</strong> (<em>ttk.Notebook</em>) – The Tkinter notebook widget where the ‘Course’ tab will be added.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.add_course">
+<span class="sig-name descname"><span class="pre">add_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.add_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.add_course" title="Link to this definition"></a></dt>
+<dd><p>Add a new course to the course list and save it to the database.</p>
+<p>Validates the input for course name and course ID before adding the course.
+Displays an error message if validation fails, otherwise saves the course to the database and updates the Treeview.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.clear_course_search">
+<span class="sig-name descname"><span class="pre">clear_course_search</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.clear_course_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.clear_course_search" title="Link to this definition"></a></dt>
+<dd><p>Clear the search field and repopulate the Treeview with all courses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.clear_form">
+<span class="sig-name descname"><span class="pre">clear_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.clear_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.clear_form" title="Link to this definition"></a></dt>
+<dd><p>Clear the input form fields for adding a new course.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.delete_course">
+<span class="sig-name descname"><span class="pre">delete_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.delete_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.delete_course" title="Link to this definition"></a></dt>
+<dd><p>Delete the selected course from the list and database.</p>
+<p>If no course is selected, an error message is displayed. Removes the course from enrolled students and the database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.edit_course">
+<span class="sig-name descname"><span class="pre">edit_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.edit_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.edit_course" title="Link to this definition"></a></dt>
+<dd><p>Load the selected course’s details into the form for editing.</p>
+<p>If no course is selected, an error message is displayed. Enables the ‘Update Course’ button to save changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.insert_course_into_treeview">
+<span class="sig-name descname"><span class="pre">insert_course_into_treeview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.insert_course_into_treeview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.insert_course_into_treeview" title="Link to this definition"></a></dt>
+<dd><p>Insert a course’s details into the Treeview widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course</strong> (<a class="reference internal" href="classes.html#classes.Course" title="classes.Course"><em>Course</em></a>) – The course object to be inserted into the Treeview.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.search_course">
+<span class="sig-name descname"><span class="pre">search_course</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.search_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.search_course" title="Link to this definition"></a></dt>
+<dd><p>Search for a course based on the filter criteria (Course Name or Course ID) and display the results in the Treeview.</p>
+<p>If no query is provided, an error message is displayed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.set_assign_instructor_tab">
+<span class="sig-name descname"><span class="pre">set_assign_instructor_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.set_assign_instructor_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.set_assign_instructor_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the assign instructor tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.AssignInstructorTab" title="tkinter_tabs.AssignInstructorTab"><em>AssignInstructorTab</em></a>) – The reference to the assign instructor tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.set_enroll_students_tab">
+<span class="sig-name descname"><span class="pre">set_enroll_students_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.set_enroll_students_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.set_enroll_students_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the enroll students tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab" title="tkinter_tabs.EnrollStudentsTab"><em>EnrollStudentsTab</em></a>) – The reference to the enroll students tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.set_instructors_tab">
+<span class="sig-name descname"><span class="pre">set_instructors_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.set_instructors_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.set_instructors_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the instructors tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.InstructorTab" title="tkinter_tabs.InstructorTab"><em>InstructorTab</em></a>) – The reference to the instructors tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.set_students_tab">
+<span class="sig-name descname"><span class="pre">set_students_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.set_students_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.set_students_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the students tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.StudentTab" title="tkinter_tabs.StudentTab"><em>StudentTab</em></a>) – The reference to the students tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.update_course">
+<span class="sig-name descname"><span class="pre">update_course</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.update_course"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.update_course" title="Link to this definition"></a></dt>
+<dd><p>Update the selected course’s details in the database and the course list.</p>
+<p>Validates input for the course name before saving the updated course details to the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course_id</strong> (<em>str</em>) – The ID of the course to be updated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.CourseTab.update_course_treeview">
+<span class="sig-name descname"><span class="pre">update_course_treeview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#CourseTab.update_course_treeview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.CourseTab.update_course_treeview" title="Link to this definition"></a></dt>
+<dd><p>Update the Treeview to display the current list of courses with their assigned instructors.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tkinter_tabs.EnrollStudentsTab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter_tabs.</span></span><span class="sig-name descname"><span class="pre">EnrollStudentsTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">students_tab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">courses_tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#EnrollStudentsTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.EnrollStudentsTab" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for enrolling students in courses in a Tkinter notebook widget. This tab allows users to select a student and a course, then enroll the student in the course.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notebook</strong> (<em>ttk.Notebook</em>) – The Tkinter notebook widget where the ‘Enroll Students’ tab will be added.</p></li>
+<li><p><strong>students_tab</strong> (<a class="reference internal" href="#tkinter_tabs.StudentTab" title="tkinter_tabs.StudentTab"><em>StudentTab</em></a>) – The reference to the students tab.</p></li>
+<li><p><strong>courses_tab</strong> (<a class="reference internal" href="#tkinter_tabs.CourseTab" title="tkinter_tabs.CourseTab"><em>CourseTab</em></a>) – The reference to the courses tab.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.EnrollStudentsTab.enroll_student">
+<span class="sig-name descname"><span class="pre">enroll_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#EnrollStudentsTab.enroll_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.EnrollStudentsTab.enroll_student" title="Link to this definition"></a></dt>
+<dd><p>Enroll the selected student in the selected course.</p>
+<p>Validates the selections to ensure a student and a course are selected, checks if the student is already enrolled in the course or an equivalent course, and if successful, enrolls the student in the course and updates the Treeviews.
+Displays success or error messages based on the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the selection of a student or course is invalid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.EnrollStudentsTab.populate_dropdowns">
+<span class="sig-name descname"><span class="pre">populate_dropdowns</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#EnrollStudentsTab.populate_dropdowns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.EnrollStudentsTab.populate_dropdowns" title="Link to this definition"></a></dt>
+<dd><p>Populate the dropdown menus with available students and courses.</p>
+<p>Displays students and courses that the selected student is not already enrolled in. Updates the dropdown menus for students and courses. Disables the enroll button if there are no students or courses available for selection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.EnrollStudentsTab.update_courses">
+<span class="sig-name descname"><span class="pre">update_courses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#EnrollStudentsTab.update_courses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.EnrollStudentsTab.update_courses" title="Link to this definition"></a></dt>
+<dd><p>Update the course dropdown when there are changes in the list of available courses.</p>
+<p>Calls <cite>populate_dropdowns()</cite> to refresh the list of courses.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.EnrollStudentsTab.update_students">
+<span class="sig-name descname"><span class="pre">update_students</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#EnrollStudentsTab.update_students"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.EnrollStudentsTab.update_students" title="Link to this definition"></a></dt>
+<dd><p>Update the student dropdown when there are changes in the list of available students.</p>
+<p>Calls <cite>populate_dropdowns()</cite> to refresh the list of students.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter_tabs.</span></span><span class="sig-name descname"><span class="pre">InstructorTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing the ‘Instructor’ tab in a Tkinter notebook widget. This tab allows users to add, edit, search, and delete instructors, as well as view instructor details in a Treeview widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>notebook</strong> (<em>ttk.Notebook</em>) – The Tkinter notebook widget where the ‘Instructor’ tab will be added.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.add_instructor">
+<span class="sig-name descname"><span class="pre">add_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.add_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.add_instructor" title="Link to this definition"></a></dt>
+<dd><p>Add a new instructor to the instructor list and save it to the database.</p>
+<p>Validates the input for instructor name, age, email, and instructor ID before adding the instructor.
+Displays an error message if validation fails, otherwise saves the instructor to the database and updates the Treeview.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.clear_form">
+<span class="sig-name descname"><span class="pre">clear_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.clear_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.clear_form" title="Link to this definition"></a></dt>
+<dd><p>Clear the input form fields for adding a new instructor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.clear_instructor_search">
+<span class="sig-name descname"><span class="pre">clear_instructor_search</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.clear_instructor_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.clear_instructor_search" title="Link to this definition"></a></dt>
+<dd><p>Clear the search field and repopulate the Treeview with all instructors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.delete_instructor">
+<span class="sig-name descname"><span class="pre">delete_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.delete_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.delete_instructor" title="Link to this definition"></a></dt>
+<dd><p>Delete the selected instructor from the list and database.</p>
+<p>If no instructor is selected, an error message is displayed. Removes the instructor from the assigned courses and the database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.edit_instructor">
+<span class="sig-name descname"><span class="pre">edit_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.edit_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.edit_instructor" title="Link to this definition"></a></dt>
+<dd><p>Load the selected instructor’s details into the form for editing.</p>
+<p>If no instructor is selected, an error message is displayed. Enables the ‘Update Instructor’ button to save changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.insert_instructor_into_treeview">
+<span class="sig-name descname"><span class="pre">insert_instructor_into_treeview</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instructor</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.insert_instructor_into_treeview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.insert_instructor_into_treeview" title="Link to this definition"></a></dt>
+<dd><p>Insert an instructor’s details into the Treeview widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instructor</strong> (<a class="reference internal" href="classes.html#classes.Instructor" title="classes.Instructor"><em>Instructor</em></a>) – The instructor object to be inserted into the Treeview.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.search_instructor">
+<span class="sig-name descname"><span class="pre">search_instructor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.search_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.search_instructor" title="Link to this definition"></a></dt>
+<dd><p>Search for an instructor based on the filter criteria (Name, Age, Email, or ID) and display the results in the Treeview.</p>
+<p>If no query is provided, an error message is displayed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.set_assign_instructor_tab">
+<span class="sig-name descname"><span class="pre">set_assign_instructor_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.set_assign_instructor_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.set_assign_instructor_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the assign instructor tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.AssignInstructorTab" title="tkinter_tabs.AssignInstructorTab"><em>AssignInstructorTab</em></a>) – The reference to the assign instructor tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.set_course_tab">
+<span class="sig-name descname"><span class="pre">set_course_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">course_tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.set_course_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.set_course_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the course tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>course_tab</strong> (<a class="reference internal" href="#tkinter_tabs.CourseTab" title="tkinter_tabs.CourseTab"><em>CourseTab</em></a>) – The reference to the course tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.update_instructor">
+<span class="sig-name descname"><span class="pre">update_instructor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instructor_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.update_instructor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.update_instructor" title="Link to this definition"></a></dt>
+<dd><p>Update the selected instructor’s details in the database and the instructor list.</p>
+<p>Validates input for name, age, and email before saving the updated instructor details to the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instructor_id</strong> (<em>str</em>) – The ID of the instructor to be updated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.InstructorTab.update_instructor_treeview">
+<span class="sig-name descname"><span class="pre">update_instructor_treeview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#InstructorTab.update_instructor_treeview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.InstructorTab.update_instructor_treeview" title="Link to this definition"></a></dt>
+<dd><p>Update the Treeview to display the current list of instructors with their assigned courses.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tkinter_tabs.LoadAndStoreDataTab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter_tabs.</span></span><span class="sig-name descname"><span class="pre">LoadAndStoreDataTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">student_tab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">instructor_tab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">course_tab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assign_instructor_tab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enroll_students_tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#LoadAndStoreDataTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.LoadAndStoreDataTab" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class for managing data in a Tkinter notebook widget. This tab allows users to load, save, and back up data for students, instructors, and courses in both JSON and CSV formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>notebook</strong> (<em>ttk.Notebook</em>) – The Tkinter notebook widget where the ‘Manage Data’ tab will be added.</p></li>
+<li><p><strong>student_tab</strong> (<a class="reference internal" href="#tkinter_tabs.StudentTab" title="tkinter_tabs.StudentTab"><em>StudentTab</em></a>) – The reference to the students tab.</p></li>
+<li><p><strong>instructor_tab</strong> (<a class="reference internal" href="#tkinter_tabs.InstructorTab" title="tkinter_tabs.InstructorTab"><em>InstructorTab</em></a>) – The reference to the instructors tab.</p></li>
+<li><p><strong>course_tab</strong> (<a class="reference internal" href="#tkinter_tabs.CourseTab" title="tkinter_tabs.CourseTab"><em>CourseTab</em></a>) – The reference to the courses tab.</p></li>
+<li><p><strong>assign_instructor_tab</strong> (<a class="reference internal" href="#tkinter_tabs.AssignInstructorTab" title="tkinter_tabs.AssignInstructorTab"><em>AssignInstructorTab</em></a>) – The reference to the assign instructor tab.</p></li>
+<li><p><strong>enroll_students_tab</strong> (<a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab" title="tkinter_tabs.EnrollStudentsTab"><em>EnrollStudentsTab</em></a>) – The reference to the enroll students tab.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.LoadAndStoreDataTab.backup_database">
+<span class="sig-name descname"><span class="pre">backup_database</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#LoadAndStoreDataTab.backup_database"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.LoadAndStoreDataTab.backup_database" title="Link to this definition"></a></dt>
+<dd><p>Backup the current SQLite database.</p>
+<p>Prompts the user to select a location to save the backup and creates a backup of the database in the specified location. Displays a success or error message based on the result.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.LoadAndStoreDataTab.load_all_data">
+<span class="sig-name descname"><span class="pre">load_all_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#LoadAndStoreDataTab.load_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.LoadAndStoreDataTab.load_all_data" title="Link to this definition"></a></dt>
+<dd><p>Load data (students, instructors, and courses) from a JSON file.</p>
+<p>Prompts the user to select a JSON file and loads the data into the application. The data is validated and any inconsistencies are auto-corrected. Displays success, warning, or error messages based on the result.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.LoadAndStoreDataTab.save_all_data">
+<span class="sig-name descname"><span class="pre">save_all_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#LoadAndStoreDataTab.save_all_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.LoadAndStoreDataTab.save_all_data" title="Link to this definition"></a></dt>
+<dd><p>Save all data (students, instructors, and courses) to a JSON file.</p>
+<p>Prompts the user to select a directory and saves the data in JSON format. Displays a success or error message based on the result.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.LoadAndStoreDataTab.save_all_data_as_csv">
+<span class="sig-name descname"><span class="pre">save_all_data_as_csv</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#LoadAndStoreDataTab.save_all_data_as_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.LoadAndStoreDataTab.save_all_data_as_csv" title="Link to this definition"></a></dt>
+<dd><p>Save all data (students, instructors, and courses) to CSV files.</p>
+<p>Prompts the user to select a directory and saves the data in separate CSV files (students.csv, instructors.csv, courses.csv). Displays a success or error message based on the result.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter_tabs.</span></span><span class="sig-name descname"><span class="pre">StudentTab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">notebook</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A class representing the ‘Student’ tab in a Tkinter notebook widget. This tab allows users to add, edit, search, and delete students, as well as view student details in a Treeview widget.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>notebook</strong> (<em>ttk.Notebook</em>) – The Tkinter notebook widget where the ‘Student’ tab will be added.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.add_student">
+<span class="sig-name descname"><span class="pre">add_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.add_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.add_student" title="Link to this definition"></a></dt>
+<dd><p>Add a new student to the student list and save it to the database.</p>
+<p>Validates the input for student name, age, email, and student ID before adding the student.
+Displays an error message if validation fails, otherwise saves the student to the database and updates the Treeview.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.clear_form">
+<span class="sig-name descname"><span class="pre">clear_form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.clear_form"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.clear_form" title="Link to this definition"></a></dt>
+<dd><p>Clear the input form fields for adding a new student.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.clear_student_search">
+<span class="sig-name descname"><span class="pre">clear_student_search</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.clear_student_search"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.clear_student_search" title="Link to this definition"></a></dt>
+<dd><p>Clear the search field and repopulate the Treeview with all students.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.delete_student">
+<span class="sig-name descname"><span class="pre">delete_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.delete_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.delete_student" title="Link to this definition"></a></dt>
+<dd><p>Delete the selected student from the list and database.</p>
+<p>If no student is selected, an error message is displayed. Removes the student from enrolled courses and the database.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.edit_student">
+<span class="sig-name descname"><span class="pre">edit_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.edit_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.edit_student" title="Link to this definition"></a></dt>
+<dd><p>Load the selected student’s details into the form for editing.</p>
+<p>If no student is selected, an error message is displayed. Enables the ‘Update Student’ button to save changes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.search_student">
+<span class="sig-name descname"><span class="pre">search_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.search_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.search_student" title="Link to this definition"></a></dt>
+<dd><p>Search for a student based on the filter criteria (Name, Age, Email, or ID) and display the results in the Treeview.</p>
+<p>If no query is provided, an error message is displayed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.set_assign_instructor_tab">
+<span class="sig-name descname"><span class="pre">set_assign_instructor_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.set_assign_instructor_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.set_assign_instructor_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the assign instructor tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.AssignInstructorTab" title="tkinter_tabs.AssignInstructorTab"><em>AssignInstructorTab</em></a>) – The reference to the assign instructor tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.set_courses_tab">
+<span class="sig-name descname"><span class="pre">set_courses_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">courses_tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.set_courses_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.set_courses_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the courses tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>courses_tab</strong> (<a class="reference internal" href="#tkinter_tabs.CourseTab" title="tkinter_tabs.CourseTab"><em>CourseTab</em></a>) – The reference to the courses tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.set_enroll_students_tab">
+<span class="sig-name descname"><span class="pre">set_enroll_students_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.set_enroll_students_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.set_enroll_students_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the enroll students tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<a class="reference internal" href="#tkinter_tabs.EnrollStudentsTab" title="tkinter_tabs.EnrollStudentsTab"><em>EnrollStudentsTab</em></a>) – The reference to the enroll students tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.set_instructors_tab">
+<span class="sig-name descname"><span class="pre">set_instructors_tab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instructors_tab</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.set_instructors_tab"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.set_instructors_tab" title="Link to this definition"></a></dt>
+<dd><p>Set the instructors tab reference to allow communication between tabs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>instructors_tab</strong> (<a class="reference internal" href="#tkinter_tabs.InstructorTab" title="tkinter_tabs.InstructorTab"><em>InstructorTab</em></a>) – The reference to the instructors tab.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.update_student">
+<span class="sig-name descname"><span class="pre">update_student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">student_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.update_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.update_student" title="Link to this definition"></a></dt>
+<dd><p>Update the selected student’s details in the database and the student list.</p>
+<p>Validates input for name, age, and email before saving the updated student details to the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>student_id</strong> (<em>str</em>) – The ID of the student to be updated.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tkinter_tabs.StudentTab.update_student_treeview">
+<span class="sig-name descname"><span class="pre">update_student_treeview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tkinter_tabs.html#StudentTab.update_student_treeview"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tkinter_tabs.StudentTab.update_student_treeview" title="Link to this definition"></a></dt>
+<dd><p>Update the Treeview to display the current list of students with their assigned courses.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tkinter_main.html" class="btn btn-neutral float-left" title="tkinter_main module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Sharafeddine Sharafeddine.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
